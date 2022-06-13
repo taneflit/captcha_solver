@@ -1,6 +1,8 @@
 library captcha_solver;
 import 'dart:convert';
 import 'dart:io';
+import 'dart:io' as IO;
+import 'package:http/http.dart' as http;
 
 
 /// to CREATE TASK, we send a POST Request to endpoint :
@@ -46,6 +48,33 @@ async {
 
   return result;
 
+
+  }
+
+  imageMemoryToText(Map inputs) async{
+    String image= inputs["task"]["body"];
+    final bytes = await IO.File(image).readAsBytesSync();
+    String imageBase64 =  base64Encode(bytes);
+    inputs["task"]["body"]=imageBase64;
+    final event = await _request(createTaskUrl, inputs);
+    final res = json.decode('$event');
+    Map headers = {'clientKey' :apiKey, 'taskId': res['taskId'] };
+    var response = await _request(getTaskResultUrl, headers);
+    var result = await json.decode('$response');
+    return result;
+
+  }
+  imageLinkToText(Map inputs) async{
+    http.Response response = await http.get(Uri.parse(inputs["task"]["body"]));
+    final bytes = response.bodyBytes;
+    String imageBase64 =  base64Encode(bytes);
+    inputs["task"]["body"]=imageBase64;
+    final event = await _request(createTaskUrl, inputs);
+    final res = json.decode('$event');
+    Map headers = {'clientKey' :apiKey, 'taskId': res['taskId'] };
+    var resp = await _request(getTaskResultUrl, headers);
+    var result = await json.decode('$resp');
+    return result;
 
   }
 

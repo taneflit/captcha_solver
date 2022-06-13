@@ -13,7 +13,9 @@ and the Flutter guide for
 
 ## Captcha Solver 
 ![ScreenShot](/captcha_solver.png)
-To use the captcha solution you need to register on the resource and top up your balance - [https://dashboard.scraptcha.com/fr/dashboard](https://dashboard.scraptcha.com/fr/dashboard)
+
+*To use the captcha solution you ne
+ed to register on the resource and top up your balance - [https://dashboard.scraptcha.com/fr/dashboard](https://dashboard.scraptcha.com/fr/dashboard)
 Documentation -[https://scraptcha.com/documentation/](https://scraptcha.com/documentation/)
 
 ## Features
@@ -33,6 +35,35 @@ dependencies:
 ```
 
 ## Usage
+## Image to Text 
+A normal CAPTCHA is an image containing distorted text that can only be read by humans. to solve this type of CAPTCHA the user is required to enter the text of the image.
+[ScreenShot](/example/lib/captcha.jpg)
+```dart
+import 'package:captcha_solver/captcha_solver.dart';
+
+void main() async {
+
+  /// Initiate query Properties
+  String apiKey = 'YOUR_API_KEY';
+  String imageMemory = 'lib/captcha.jpg';
+  String imageLink = 'https://api.vk.com/captcha.php?sid=1';
+  /// Initiate CaptchaSolver
+  CaptchaSolver captchaSolver = CaptchaSolver(apiKey);
+  /// Example of the request
+  Map inputs = {
+    "clientKey": apiKey,
+    "task": {
+      "type": "ImageToTextTask",
+      "body": imageMemory // or imageLink
+    }
+  };
+  /// Get captcha solution
+  Map response = await captchaSolver.imageMemoryToText(inputs); // Or imageLinkToText()
+  print('response: $response');
+  print(response['solution']['text']);
+  
+}
+```
 ## reCAPTCHA v2
 reCAPTCHA v2 requires the user to check the "I'm not a robot" box and can offer them an image recognition challenge.
 YOUR_WEBSITE_KEY : reCAPTCHA website key - for more details[https://scraptcha.com/documentation/](https://scraptcha.com/documentation/)
