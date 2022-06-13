@@ -2,3 +2,4 @@
 * Creation of the initial package
 * captcha solution
 * reCAPTCHA V2 
+* reCAPTCHA V3

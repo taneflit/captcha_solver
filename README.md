@@ -14,7 +14,7 @@ and the Flutter guide for
 ## Captcha Solver 
 ![ScreenShot](/captcha_solver.png)
 
-*To use the captcha solution you ne
+To use the captcha solution you ne
 ed to register on the resource and top up your balance - [https://dashboard.scraptcha.com/fr/dashboard](https://dashboard.scraptcha.com/fr/dashboard)
 Documentation -[https://scraptcha.com/documentation/](https://scraptcha.com/documentation/)
 
@@ -37,7 +37,9 @@ dependencies:
 ## Usage
 ## Image to Text 
 A normal CAPTCHA is an image containing distorted text that can only be read by humans. to solve this type of CAPTCHA the user is required to enter the text of the image.
-[ScreenShot](/example/lib/captcha.jpg)
+You can use imageMemoryToText() function for local images or imageLinkToText() for images from the site.
+YOUR_API_KEY : You can find the API  key [here](https://dashboard.scraptcha.com/fr/dashboard)
+![ScreenShot](/example/lib/captcha.jpg)
 ```dart
 import 'package:captcha_solver/captcha_solver.dart';
 
@@ -89,15 +91,46 @@ void main() async {
     }
   };
   /// Get captcha solution
-  Map response = await captchaSolver.recaptchaV2(inputs);
+  Map response = await captchaSolver.recaptcha(inputs);
   print('response: $response');
-  print(response['solution']['text']);
+  print(response['solution']['gRecaptchaResponse']);
 }
 
 
 ```
+## reCAPTCHA V3
+reCAPTCHA v3 is somewhat similar to reCAPTCHA V2. reCAPTCHA V3 works in the background, does not require user interaction and generates a score based on user behavior. The higher the score, the more likely the user is human.
+```dart
+import 'package:captcha_solver/captcha_solver.dart';
 
+void main() async {
 
+  /// Initiate query Properties
+  String apiKey = 'YOUR_API_KEY';
+  String websiteURL = 'http://mywebsite.com/recaptcha/test.php';
+  String websiteKey = 'YOUR_WEBSITE_KEY';
+ /// Initiate CaptchaSolver
+  CaptchaSolver captchaSolver = CaptchaSolver(apiKey);
+/// Example of the request
+  Map inputs = {
+  "clientKey": "deab419c029e9e33cbaacab42b36ff1b833c4451b4f8cbf4a72703750b9674d1",
+  "task": {
+  "type": "RecaptchaV3TaskProxyless", // type of captcha
+  "websiteURL": websiteURL,
+  "websiteKey": websiteKey,
+  "minScore": 0.3,
+  "pageAction": "verify",
+  "isEnterprise": false
+  }
+};
+  /// Get captcha solution
+  Map response = await captchaSolver.recaptcha(inputs);
+  print('response: $response');
+  print(response['solution']['gRecaptchaResponse']);
+
+}
+
+```
 ## Additional information
 
 Scraptcha uses two methods to solve its CAPTCHAs:

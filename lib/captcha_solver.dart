@@ -38,7 +38,7 @@ async {
 }
 
 /// function to send post request to the endpoints (createTask and getTaskResult) and receive reponse
-  recaptchaV2(Map inputs) async {
+  recaptcha(Map inputs) async {
   final event = await _request(createTaskUrl, inputs);
   final response = json.decode(event!);
   print(event);
