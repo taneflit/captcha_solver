@@ -14,8 +14,7 @@ and the Flutter guide for
 ## Captcha Solver 
 ![ScreenShot](/captcha_solver.png)
 
-To use the captcha solution you ne
-ed to register on the resource and top up your balance - [https://dashboard.scraptcha.com/fr/dashboard](https://dashboard.scraptcha.com/fr/dashboard)
+To use the captcha solution you need to register on the resource and top up your balance - [https://dashboard.scraptcha.com/fr/dashboard](https://dashboard.scraptcha.com/fr/dashboard)
 Documentation -[https://scraptcha.com/documentation/](https://scraptcha.com/documentation/)
 
 ## Features
@@ -113,7 +112,7 @@ void main() async {
   CaptchaSolver captchaSolver = CaptchaSolver(apiKey);
 /// Example of the request
   Map inputs = {
-  "clientKey": "deab419c029e9e33cbaacab42b36ff1b833c4451b4f8cbf4a72703750b9674d1",
+  "clientKey": apiKey,
   "task": {
   "type": "RecaptchaV3TaskProxyless", // type of captcha
   "websiteURL": websiteURL,
