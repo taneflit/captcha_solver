@@ -1,6 +1,6 @@
 name: captcha_solver
-description: Solution of captcha
-version: 0.0.1
+description: captcha_solver is a service used for solving different type of captcha (images with text, Recaptcha v2/v3 Enterprise/non-Enterprise, Funcaptcha Arcoselabs, GeeTest and hCaptcha )
+version: 0.0.3
 homepage: https://github.com/taneflit/captcha_solver
 
 environment:

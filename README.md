@@ -61,8 +61,9 @@ void main() async {
   /// Get captcha solution
   Map response = await captchaSolver.imageMemoryToText(inputs); // Or imageLinkToText()
   print('response: $response');
-  print(response['solution']['text']);
-  
+  if(response['status']=='ready') {
+    print(response['solution']['text']);
+  }
 }
 ```
 ## reCAPTCHA v2
@@ -92,7 +93,9 @@ void main() async {
   /// Get captcha solution
   Map response = await captchaSolver.recaptcha(inputs);
   print('response: $response');
-  print(response['solution']['gRecaptchaResponse']);
+  if(response['status']=='ready') {
+    print(response['solution']['gRecaptchaResponse']);
+  }
 }
 
 
@@ -125,8 +128,9 @@ void main() async {
   /// Get captcha solution
   Map response = await captchaSolver.recaptcha(inputs);
   print('response: $response');
-  print(response['solution']['gRecaptchaResponse']);
-
+  if(response['status']=='ready') {
+    print(response['solution']['gRecaptchaResponse']);
+  }
 }
 
 ```

@@ -1,4 +1,8 @@
-## 0.0.1 - 2022-06-10
+## [0.0.3] - 2022-06-16
+* fix bugs
+## [0.0.2] - 2022-06-15 
+* change readme
+## [0.0.1] - 2022-06-10
 * Creation of the initial package
 * captcha solution
 * reCAPTCHA V2 

@@ -1,7 +1,6 @@
 import 'package:captcha_solver/captcha_solver.dart';
 
 void main() async {
-
   /// Initiate query Properties
   String apiKey = 'YOUR_API_KEY';
   String websiteURL = 'http://mywebsite.com/recaptcha/test.php';
@@ -12,17 +11,16 @@ void main() async {
   Map inputs = {
     "clientKey": apiKey,
     "task": {
-      "type": "RecaptchaV3TaskProxyless", // type of captcha
+      "type": "RecaptchaV2TaskProxyless",
       "websiteURL": websiteURL,
       "websiteKey": websiteKey,
-      "minScore": 0.3,
-      "pageAction": "verify",
-      "isEnterprise": false
+      "isInvisible": false
     }
   };
   /// Get captcha solution
   Map response = await captchaSolver.recaptcha(inputs);
   print('response: $response');
-  print(response['solution']['gRecaptchaResponse']);
-
+  if(response['status']=='ready') {
+    print(response['solution']['gRecaptchaResponse']);
+  }
 }
