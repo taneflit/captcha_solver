@@ -11,8 +11,9 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-## Captcha Solver 
 ## SCRAPTCHA.com
+## Captcha Solver 
+
 ![ScreenShot](/screen2.png)
 
 To use the captcha solution you need to register on the resource and top up your balance - [https://dashboard.scraptcha.com/fr/dashboard](https://dashboard.scraptcha.com/fr/dashboard)
@@ -71,6 +72,7 @@ void main() async {
 reCAPTCHA v2 requires the user to check the "I'm not a robot" box and can offer them an image recognition challenge.
 YOUR_WEBSITE_KEY : reCAPTCHA website key - for more details : [https://scraptcha.com/documentation/](https://scraptcha.com/documentation/)
 YOUR_API_KEY : You can find the API  key [here](https://dashboard.scraptcha.com/fr/dashboard)
+![ScreenShot](/reCAPTCHAv2.jpg)
 ```dart
 import 'package:captcha_solver/captcha_solver.dart';
 
@@ -103,6 +105,7 @@ void main() async {
 ```
 ## reCAPTCHA V3
 reCAPTCHA v3 is somewhat similar to reCAPTCHA V2. reCAPTCHA V3 works in the background, does not require user interaction and generates a score based on user behavior. The higher the score, the more likely the user is human.
+![ScreenShot](/recaptcha-3-768x426.png)
 ```dart
 import 'package:captcha_solver/captcha_solver.dart';
 
@@ -137,6 +140,7 @@ void main() async {
 ```
 ## FunCAPTCHA - Arkose Labs
 This type of task solves the arkoselabs.com conundrum in our worker browsers. You submit the public key and the website address then you will receive a token when the task is completed. This is the token you will need to submit your forms with Arkoselabs captcha.
+![ScreenShot](/funcaptcha1.e289a39-1.jpg)
 ```dart
 
 import 'package:captcha_solver/captcha_solver.dart';
@@ -168,6 +172,7 @@ void main() async {
 ```
 ## hCAPTCHA
 HCAPTCHA is a most popular reCAPTCHA alternative. The properties of this task are the same as reCAPTCHA except for the type property.
+![ScreenShot](/hcaptcha_example1.f7d96e5-1.png)
 ```dart
 import 'package:captcha_solver/captcha_solver.dart';
 
@@ -198,6 +203,7 @@ void main() async {
 
 
 ```
+
 
 
 ## Additional information
