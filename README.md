@@ -12,7 +12,8 @@ and the Flutter guide for
 -->
 
 ## Captcha Solver 
-![ScreenShot](/captcha_solver.png)
+## SCRAPTCHA.com
+![ScreenShot](/screen2.png)
 
 To use the captcha solution you need to register on the resource and top up your balance - [https://dashboard.scraptcha.com/fr/dashboard](https://dashboard.scraptcha.com/fr/dashboard)
 Documentation -[https://scraptcha.com/documentation/](https://scraptcha.com/documentation/)
@@ -30,7 +31,7 @@ You should ensure that you add the router as a dependency in your flutter projec
 
 ```yaml
 dependencies:
-  captcha_solver: ^0.0.1
+  captcha_solver: ^1.0.0
 ```
 
 ## Usage
@@ -68,7 +69,7 @@ void main() async {
 ```
 ## reCAPTCHA v2
 reCAPTCHA v2 requires the user to check the "I'm not a robot" box and can offer them an image recognition challenge.
-YOUR_WEBSITE_KEY : reCAPTCHA website key - for more details[https://scraptcha.com/documentation/](https://scraptcha.com/documentation/)
+YOUR_WEBSITE_KEY : reCAPTCHA website key - for more details : [https://scraptcha.com/documentation/](https://scraptcha.com/documentation/)
 YOUR_API_KEY : You can find the API  key [here](https://dashboard.scraptcha.com/fr/dashboard)
 ```dart
 import 'package:captcha_solver/captcha_solver.dart';
@@ -134,9 +135,75 @@ void main() async {
 }
 
 ```
-## Additional information
+## FunCAPTCHA - Arkose Labs
+This type of task solves the arkoselabs.com conundrum in our worker browsers. You submit the public key and the website address then you will receive a token when the task is completed. This is the token you will need to submit your forms with Arkoselabs captcha.
+```dart
 
+import 'package:captcha_solver/captcha_solver.dart';
+
+void main() async {
+
+  /// Initiate query Properties
+  String apiKey = 'YOUR_API_KEY';
+  String websiteURL = 'https://account.battle .net/creation/flow/creation-full';
+  String websitePublicKey = 'YOUR_WEBSITE_KEY';
+ /// Initiate CaptchaSolver
+  CaptchaSolver captchaSolver = CaptchaSolver(apiKey);
+/// Example of the request
+  Map inputs = {
+    "clientKey": "YOUR_API_KEY",
+    "task": {
+      "type": "FunCaptchaTaskProxyless",
+      "websitePublicKey": websitePublicKey,
+      "websiteURL": websiteURL
+  }
+};
+  /// Get captcha solution
+  Map response = await captchaSolver.recaptcha(inputs);
+  print('response: $response');
+  if(response['status']=='ready') {
+    print(response['solution']['token']);
+  }
+}
+```
+## hCAPTCHA
+HCAPTCHA is a most popular reCAPTCHA alternative. The properties of this task are the same as reCAPTCHA except for the type property.
+```dart
+import 'package:captcha_solver/captcha_solver.dart';
+
+void main() async {
+  /// Initiate query Properties
+  String apiKey = 'YOUR_API_KEY';
+  String websiteURL = 'https://hcaptcha.com/';
+  String websiteKey = 'YOUR_WEBSITE_KEY';
+  /// Initiate CaptchaSolver
+  CaptchaSolver captchaSolver = CaptchaSolver(apiKey);
+  /// Example of the request
+  Map inputs = {
+    "clientKey": apiKey,
+    "task": {
+      "type": "HCaptchaTaskProxyless",
+      "websiteURL": websiteURL,
+      "websiteKey": websiteKey,
+  
+    }
+  };
+  /// Get captcha solution
+  Map response = await captchaSolver.recaptcha(inputs);
+  print('response: $response');
+  if(response['status']=='ready') {
+    print(response['solution']['gRecaptchaResponse']);
+  }
+}
+
+
+```
+
+
+## Additional information
 Scraptcha uses two methods to solve its CAPTCHAs:
 A CAPTCHA solving service based on these humans: The service has hired human workers to solve CAPTCHAs, which are constantly online. When you submit your CAPTCHA, Scraptcha passes it on to the human workers who solve the text and send it back.
 OCR (optical character recognition) solutions
 In this method, captcha solving is done automatically using OCR technology.
+
+for more information : [https://scraptcha.com/documentation/](https://scraptcha.com/documentation/)

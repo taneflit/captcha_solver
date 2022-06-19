@@ -41,7 +41,7 @@ class CaptchaSolver {
     while (result['status'] == 'processing') {
       res = await _request(getTaskResultUrl, headers);
       result = await json.decode('$res');
-      await Future.delayed(Duration(milliseconds: 200));
+      await Future.delayed(Duration(milliseconds: 2000));
     }
     return result;
   }
@@ -59,7 +59,7 @@ class CaptchaSolver {
     while (result['status'] == 'processing') {
       response = await _request(getTaskResultUrl, headers);
       result = await json.decode('$response');
-      await Future.delayed(Duration(milliseconds: 200));
+      await Future.delayed(Duration(milliseconds: 2000));
     }
     return result;
   }
@@ -77,7 +77,7 @@ class CaptchaSolver {
     while (result['status'] == 'processing') {
       resp = await _request(getTaskResultUrl, headers);
       result = await json.decode('$resp');
-      await Future.delayed(Duration(milliseconds: 200));
+      await Future.delayed(Duration(milliseconds: 2000));
     }
 
     return result;
