@@ -14,7 +14,7 @@ and the Flutter guide for
 ## SCRAPTCHA.com
 ## Captcha Solver
 
-<img alt="ScreenShot" src="https://github.com/taneflit/captcha_solver/blob/master/screen2.png"/>
+<img alt="ScreenShot" src="https://github.com/taneflit/captcha_solver/blob/master/images/screen2.png"/>
 
 To use the captcha solution you need to register on the resource and top up your balance - [https://dashboard.scraptcha.com/fr/dashboard](https://dashboard.scraptcha.com/fr/dashboard)
 Documentation -[https://scraptcha.com/documentation/](https://scraptcha.com/documentation/)
