@@ -32,7 +32,7 @@ You should ensure that you add the router as a dependency in your flutter projec
 
 ```yaml
 dependencies:
-  captcha_solver: ^1.0.3
+  captcha_solver: ^1.0.4
 ```
 
 ## Usage

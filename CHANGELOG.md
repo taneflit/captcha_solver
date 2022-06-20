@@ -1,3 +1,5 @@
+## [1.0.4] -2022-06-20
+* add image to text image
 ## [1.0.3] -2002-06-20
 * change image path
 ## [1.0.2] -2022-06-20
